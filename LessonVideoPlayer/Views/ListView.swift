@@ -10,7 +10,7 @@ import SwiftUI
 struct ListView: View {
     
     //    Pass in data from the ViewModel file using a state property.
-
+    
     @EnvironmentObject var model: ViewModel
     
     var body: some View {
@@ -23,24 +23,19 @@ struct ListView: View {
                 
                 List {
                     
-                    LazyVStack {
-                        
-                        ForEach(model.lessons) { lesson in
+                    ForEach(model.lessons) { lesson in
                             
-                            VStack(spacing: 20) {
-                                
-                                NavigationLink(destination: DetailView())
-                                { RowView(title: lesson.title) }
-                                
-                            }
+                            NavigationLink(destination: DetailView())
+                            { RowView(title: lesson.title) }
                             
                         }
-                        
-                    }
                 }
-                
             }
+            .listStyle(InsetListStyle())
+            .navigationTitle("Learn SwiftUI")
+            
         }
+        
     }
 }
 

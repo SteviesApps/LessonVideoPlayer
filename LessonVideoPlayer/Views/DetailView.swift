@@ -6,15 +6,28 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct DetailView: View {
+    
+    @EnvironmentObject var model: ViewModel
+    
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        let url = URL(string: "https://codewithchris.github.io/Module5Challenge/Lesson%201.mp4")
+        
+        if url != nil {
+        
+        VideoPlayer(player: AVPlayer(url: url!))
+            
+        }
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView()
+        DetailView().environmentObject(ViewModel())
     }
 }
