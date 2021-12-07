@@ -13,6 +13,10 @@ struct ListView: View {
     
     @EnvironmentObject var model: ViewModel
     
+    @State private var searchText = ""
+    
+    
+    
     var body: some View {
         
         NavigationView {
@@ -31,12 +35,14 @@ struct ListView: View {
                         }
                 }
             }
+            .searchable(text: $searchText)
             .listStyle(InsetListStyle())
             .navigationTitle("Learn SwiftUI")
             
         }
-        
     }
+    
+    
 }
 
 struct ListView_Previews: PreviewProvider {
