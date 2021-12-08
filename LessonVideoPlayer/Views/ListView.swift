@@ -29,7 +29,7 @@ struct ListView: View {
                     
                     ForEach(model.lessons) { lesson in
                             
-                            NavigationLink(destination: DetailView())
+                        NavigationLink(destination: DetailView(lesson: lesson))
                             { RowView(title: lesson.title) }
                             
                         }
