@@ -13,6 +13,10 @@ class ViewModel: ObservableObject {
     
     @Published var lessons = [Lesson]()
     
+    @Published var currentVideo: Lesson?
+    
+    var currentVideoIndex: Int = 0
+    
 //    MARK: - Data Method
     
     init() {
@@ -70,6 +74,18 @@ class ViewModel: ObservableObject {
         
         // Kick off data task
         dataTask.resume()
+        
+    }
+    
+    func nextVideo() {
+        
+        currentVideoIndex += 1
+        
+        if currentVideoIndex < currentVideo!.title.count {
+            
+            currentVideo = currentVideo!.title[currentVideoIndex]
+            
+        }
         
     }
     

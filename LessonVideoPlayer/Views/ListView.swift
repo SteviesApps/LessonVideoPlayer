@@ -13,7 +13,9 @@ struct ListView: View {
     
     @EnvironmentObject var model: ViewModel
     
-    @State private var searchText = ""
+//    var lesson: Lesson
+    
+//    @State private var searchText = ""
     
     
     
@@ -34,16 +36,35 @@ struct ListView: View {
                             
                         }
                 }
+                .listStyle(InsetListStyle())
+                .navigationTitle("Learn SwiftUI")
+//                .searchable(text: $searchText){
+                    
+//                    ForEach(searchResults, id: \.self) { result in
+                        
+//                        Text(result)
+//                            .searchCompletion(result)
+                        
+//                    }
+                    
+                }
             }
-            .searchable(text: $searchText)
-            .listStyle(InsetListStyle())
-            .navigationTitle("Learn SwiftUI")
-            
         }
     }
+//    var searchResults: [Lesson] {
+
+//        if searchText.isEmpty {
+            
+//            return model.lessons
+            
+//        } else {
+            
+//            return model.lessons.filter {_ in
+//                model.lessons.contains(where: searchText)}
+//        }
+//    }
     
-    
-}
+//}
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {

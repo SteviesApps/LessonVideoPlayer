@@ -10,6 +10,8 @@ import AVKit
 
 struct DetailView: View {
     
+    @EnvironmentObject var model: ViewModel
+    
     var lesson: Lesson
     
     var body: some View {
@@ -24,7 +26,11 @@ struct DetailView: View {
                     .cornerRadius(10)
             }
             
-            Button(action: {}, label: {
+            Button(action: {
+                
+                model.nextVideo()
+                
+            }, label: {
                 
                 ZStack {
                     
@@ -33,14 +39,14 @@ struct DetailView: View {
                         .foregroundColor(Color.green)
                         .cornerRadius(10)
                         .shadow(radius:5)
-                    Text("Next Video")
+                    Text("Next Video: \(model.)")
                         .foregroundColor(Color.white)
                         .bold()
                     
                 }
             })
+                .padding()
         }
-        
     }
 }
 
