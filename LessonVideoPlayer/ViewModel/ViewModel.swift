@@ -83,7 +83,7 @@ class ViewModel: ObservableObject {
         
         if currentVideoIndex < currentVideo!.title.count {
             
-            currentVideo = currentVideo!.title[currentVideoIndex]
+//            currentVideo = currentVideo!.title[currentVideoIndex]
             
         }
         

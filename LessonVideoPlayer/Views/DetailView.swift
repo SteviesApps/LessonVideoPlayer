@@ -14,6 +14,8 @@ struct DetailView: View {
     
     var lesson: Lesson
     
+    let aspectRatio: CGFloat = 478 / 849
+    
     var body: some View {
         
         VStack {
@@ -22,9 +24,14 @@ struct DetailView: View {
             
             if url != nil {
                 
-                VideoPlayer(player: AVPlayer(url: url!))
-                    .cornerRadius(10)
+                GeometryReader { geo in
+                    VideoPlayer(player: AVPlayer(url: url!))
+                        .frame(height: geo.size.width * aspectRatio)
+                        .cornerRadius(10)
+                }
             }
+            
+            Text(String(lesson.id))
             
             Button(action: {
                 
@@ -39,9 +46,14 @@ struct DetailView: View {
                         .foregroundColor(Color.green)
                         .cornerRadius(10)
                         .shadow(radius:5)
-                    Text("Next Video: \(model.)")
+                    
+                    if model.currentVideo != nil {
+                    
+                    Text("Next Video: \(model.currentVideo!.title)")
                         .foregroundColor(Color.white)
                         .bold()
+                        
+                    }
                     
                 }
             })
